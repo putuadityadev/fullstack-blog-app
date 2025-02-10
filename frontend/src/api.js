@@ -1,5 +1,5 @@
 import axios from "axios";
-const URL = "http://localhost:3000"
+const URL = "https://fullstack-blog-app-backend.onrender.com"
 
 export async function getPosts() {
   try {

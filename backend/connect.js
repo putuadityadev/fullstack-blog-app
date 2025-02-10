@@ -31,8 +31,7 @@ module.exports = {
 }
 
 console.log("test server")
-console.log('Trying to connect with URI:', process.env.ATLAS_URI.replace(/:([^:@]{8})[^:@]*@/, ':****@')); // Ini akan menyembunyikan password
-
+console.log('Trying to connect with URI:', process.env.ATLAS_URI.replace(/:([^:@]{8})[^:@]*@/, ':****@'));
 /*
 async function run() {
   try {

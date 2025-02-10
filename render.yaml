@@ -1,7 +1,0 @@
-services:
-  - type: web
-    name: fullstack-blog-app-backend
-    env: node
-    buildCommand: cd backend && npm install
-    startCommand: cd backend && node server.js
-    nodeVersion: 18.x

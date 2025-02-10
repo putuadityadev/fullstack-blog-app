@@ -30,7 +30,7 @@ A modern, full-stack blogging platform built with the MERN (MongoDB, Express.js,
 ## 🚀 Getting Started
 
 1. **Clone the repository**
-git clone https://github.com/yourusername/ablogs.git
+git clone https://github.com/putuadityadev/fullstack-blog-app.git
 
 2. **Install dependencies**
 # Frontend

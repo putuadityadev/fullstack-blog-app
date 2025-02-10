@@ -10,9 +10,9 @@ const client = new MongoClient(process.env.ATLAS_URI, {
   },
   ssl: true,
   tls: true,
-  tlsAllowInvalidCertificates: false,
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+  tlsAllowInvalidCertificates: true,
+  connectTimeoutMS: 30000,
+  socketTimeoutMS: 45000
 });
 
 let database;

@@ -1,4 +1,3 @@
-
 const { MongoClient, ServerApiVersion } = require('mongodb');
 require("dotenv").config({path: "./config.env"})
 
@@ -8,7 +7,12 @@ const client = new MongoClient(process.env.ATLAS_URI, {
     version: ServerApiVersion.v1,
     strict: true,
     deprecationErrors: true,
-  }
+  },
+  ssl: true,
+  tls: true,
+  tlsAllowInvalidCertificates: false,
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 });
 
 let database;

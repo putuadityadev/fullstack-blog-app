@@ -23,7 +23,26 @@ app.use(users)
 app.use(posts)
 app.use(awsRoutes)
 
-app.listen(PORT, () => {
-  connect.connectToServer()
-  console.log(`server is running on port: ${PORT}`)
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ 
+    success: false, 
+    message: 'Internal Server Error',
+    error: process.env.NODE_ENV === 'development' ? err.message : undefined
+  });
 });
+
+const startServer = async () => {
+  try {
+    await connect.connectToServer();
+    app.listen(PORT, () => {
+      console.log(`Server is running on port: ${PORT}`);
+    });
+  } catch (err) {
+    console.error('Failed to start server:', err);
+    process.exit(1);
+  }
+};
+
+startServer();

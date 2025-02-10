@@ -1,6 +1,5 @@
-
-const { MongoClient, ServerApiVersion } = require('mongodb');
-require("dotenv").config({path: "./config.env"})
+const { MongoClient, ServerApiVersion } = require("mongodb");
+require("dotenv").config();
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(process.env.ATLAS_URI, {
@@ -8,7 +7,12 @@ const client = new MongoClient(process.env.ATLAS_URI, {
     version: ServerApiVersion.v1,
     strict: true,
     deprecationErrors: true,
-  }
+  },
+  ssl: true,
+  tls: true,
+  tlsAllowInvalidCertificates: false,
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 });
 
 let database;
@@ -31,7 +35,7 @@ module.exports = {
 }
 
 console.log("test server")
-console.log('Trying to connect with URI:', process.env.ATLAS_URI.replace(/:([^:@]{8})[^:@]*@/, ':****@')); // Ini akan menyembunyikan password
+console.log('Trying to connect with URI:', process.env.ATLAS_URI.replace(/:([^:@]{8})[^:@]*@/, ':****@')); 
 
 /*
 async function run() {

@@ -10,12 +10,18 @@ const upload = multer()
 const app = express()
 const PORT = process.env.PORT || 3000
 
-app.use(cors())
-app.use(express.json())
-app.use(posts)
-app.use(users)
-app.use(awsRoutes)
 
+app.use(cors({
+  origin: ['http://localhost:5173', 'https://fullstack-blog-app-frontend.onrender.com'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
+}));
+
+app.use(express.json())
+app.use(users)
+app.use(posts)
+app.use(awsRoutes)
 
 app.listen(PORT, () => {
   connect.connectToServer()
